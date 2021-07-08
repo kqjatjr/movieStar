@@ -13,7 +13,8 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-
+    <!-- js import -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <title>Favorite MovieStar</title>
     <style>
       .head-title {
@@ -35,6 +36,13 @@
     </style>
   </head>
   <body>
+    <script>
+      const favoriteMovieStarList = new MovieStarList();
+
+      window.onload = function () {
+        favoriteMovieStarList.initialize();
+      };
+    </script>
     <!-- header -->
     <div id="container">
       <div class="head-title">
@@ -42,8 +50,7 @@
         <h2>최애 영화배우의 순위를 정해 봅시다!!</h2>
       </div>
       <!-- render  -->
-      <ul></ul>
+      <ul id="favoriteStarList"></ul>
     </div>
-    <script></script>
   </body>
 </html>

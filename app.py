@@ -42,7 +42,7 @@ def postStarDelete(id):
 def getStarList():
     stars = list(db.mystar.find({}).sort(
         "like", DESCENDING))
-    return jsonify({"Star": stars})
+    return jsonify({"stars": stars})
 
 
 if __name__ == '__main__':

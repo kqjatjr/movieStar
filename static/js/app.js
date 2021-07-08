@@ -12,12 +12,12 @@
     }
 
     setEvents() {
-      console.log(this.$starLike);
-      this.handleClicklikeBtn();
+      this.$movieStar.addEventListener("click", this.handleClicklikeBtn);
     }
 
-    handleClicklikeBtn = () => {
-      return console.log("good");
+    handleClicklikeBtn = (event) => {
+      const buttonID = event.target.getAttribute("data-id");
+      console.log(buttonID);
       // const starLikeId = this.$likeBtn.dataset.id;
       // console.log("/api/star/" + starLikeId + "/like");
       // return fetch("/api/star/" + starLikeId + "/like", { method: "PUT" });
@@ -58,13 +58,13 @@
                     </div>
                   </div>
                   <footer class="card-footer">
-                    <a id="likeUP" href="#" class="card-footer-item has-text-info">
+                    <a class="card-footer-item has-text-info" data-id="${_id}">
                       좋아요!
                       <span class="icon">
                         <i class="fas fa-thumbs-up"></i>
                       </span>
                     </a>
-                    <a href="#" class="card-footer-item has-text-danger">
+                    <a class="card-footer-item has-text-danger" data-id="${_id}">
                       삭제
                       <span class="icon">
                         <i class="fas fa-ban"></i>

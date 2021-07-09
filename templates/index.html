@@ -17,11 +17,8 @@
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <title>Favorite MovieStar</title>
     <style>
-      .head-title {
-        text-align: center;
-        background-color: #ffdd57;
-        height: 150px;
-        padding: 1rem;
+      .hero {
+        align-items: center;
       }
       .star-list {
         width: 500px;
@@ -45,10 +42,14 @@
     </script>
     <!-- header -->
     <div id="container">
-      <div class="head-title">
-        <h1>내 최애 영화배우!!</h1>
-        <h2>최애 영화배우의 순위를 정해 봅시다!!</h2>
-      </div>
+      <section class="hero is-warning">
+        <div class="hero-body">
+          <div class="container center">
+            <h1 class="title">마이 페이보릿 무비스타😆</h1>
+            <h2 class="subtitle">순위를 매겨봅시다</h2>
+          </div>
+        </div>
+      </section>
       <!-- render  -->
       <ul id="favoriteStarList"></ul>
     </div>

@@ -2,7 +2,6 @@
   class MovieStarList {
     constructor() {
       this.$starList = [];
-      this.getStarList();
     }
     initialize() {
       this.$movieStar = document.querySelector("#container");
@@ -12,15 +11,42 @@
     }
 
     setEvents() {
-      this.$movieStar.addEventListener("click", this.handleClicklikeBtn);
+      this.$movieStar.addEventListener("click", this.handleClickFooter);
     }
 
-    handleClicklikeBtn = (event) => {
-      const buttonID = event.target.getAttribute("data-id");
-      console.log(buttonID);
-      // const starLikeId = this.$likeBtn.dataset.id;
-      // console.log("/api/star/" + starLikeId + "/like");
-      // return fetch("/api/star/" + starLikeId + "/like", { method: "PUT" });
+    handleClickFooter = ({ target }) => {
+      if (!target.classList.contains("card-footer-item")) {
+        return;
+      }
+      const buttonID = target.getAttribute("data-id");
+      if (target.classList.contains("has-text-info")) {
+        this.handleCLickLike(buttonID);
+      }
+      if (target.classList.contains("has-text-danger")) {
+        this.handleClickDelete(buttonID);
+      }
+    };
+
+    handleCLickLike = (buttonID) => {
+      return fetch(`/api/star/${buttonID}/like`, { method: "PUT" })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.success) {
+            alert("좋아요 완료!");
+            this.getStarList();
+          }
+        });
+    };
+
+    handleClickDelete = (buttonID) => {
+      return fetch(`/api/star/${buttonID}`, { method: "DELETE" })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.success) {
+            alert("삭제 완료!");
+            this.getStarList();
+          }
+        });
     };
 
     getStarList() {

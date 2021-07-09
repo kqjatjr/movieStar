@@ -15,7 +15,12 @@ class MongoJSONEncoder(JSONEncoder):
 app = Flask(__name__)
 app.json_encoder = MongoJSONEncoder
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 27017,
+                     username='test',
+                     password='test',
+                     authSource='admin',
+                     authMechanism='SCRAM-SHA-1'
+                     )
 db = client.movieStar
 
 

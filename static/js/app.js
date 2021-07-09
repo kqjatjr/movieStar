@@ -13,7 +13,7 @@
     setEvents() {
       this.$movieStar.addEventListener("click", this.handleClickFooter);
     }
-
+    // target.classList.contains() : 괄호 의 이름이가진 클래스명 있는가?
     handleClickFooter = ({ target }) => {
       if (!target.classList.contains("card-footer-item")) {
         return;

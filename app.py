@@ -4,6 +4,7 @@ from flask.json import JSONEncoder
 from bson import ObjectId
 
 
+# ObjectId 부분을 기본 문자열로 바꿔 줍니다
 class MongoJSONEncoder(JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
@@ -22,6 +23,12 @@ client = MongoClient('localhost', 27017,
                      authMechanism='SCRAM-SHA-1'
                      )
 db = client.movieStar
+
+# method :
+# 1. GET : 검색
+# 2. POST : 추가
+# 3. DELETE : 삭제
+# 4. PUT : 수정
 
 
 @app.route('/')

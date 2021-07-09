@@ -3,7 +3,13 @@ from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+
+client = MongoClient('localhost', 27017,
+                     username='test',
+                     password='test',
+                     authSource='admin',
+                     authMechanism='SCRAM-SHA-1'
+                     )
 db = client.movieStar
 
 
